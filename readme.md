@@ -35,7 +35,7 @@ You can use the following sample data files to test the app:
 
 - 👉 [`dummydata1.json`](https://ovidiuchis.github.io/invpdfgenerator/assets/dummydata1.json) – general product listing (e.g., invoice or offer)
 - 👉 [`dummydata2.json`](https://ovidiuchis.github.io/invpdfgenerator/assets/dummydata2.json) – invoice annex (some project task lines with details)
-- 👉[Random JSON from jsonplaceholder] (https://jsonplaceholder.typicode.com/posts)
+- 👉 [this random JSON](https://jsonplaceholder.typicode.com/posts) from [jsonplaceholder](https://jsonplaceholder.typicode.com/)
 
 **How to use in the live demo:**
 
