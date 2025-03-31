@@ -225,19 +225,19 @@ td {
   padding: 8px;
   text-align: left;
 }
-.source-link {
+footer a.source-link {
   color: #2b8a3e; /* Base color */
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.source-link:hover,
-.source-link:focus {
+footer a.source-link:hover,
+footer a.source-link:focus {
   color: #1f6a2d; /* Darker green on hover/focus */
   text-decoration: underline;
 }
 
-.source-link:visited {
+footer a.source-link:visited {
   color: #246835;
 }
 
