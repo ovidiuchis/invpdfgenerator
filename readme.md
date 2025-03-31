@@ -65,6 +65,6 @@ You can use the following sample data files to test the app:
 If you want to run it locally:
 
 ```bash
-git clone https://github.com/your-username/pdf-generator-web.git
-cd pdf-generator-web
+git clone [https://github.com/your-username/pdf-generator-web.git](https://github.com/ovidiuchis/invpdfgenerator.git)
+cd invpdfgenerator
 ```
