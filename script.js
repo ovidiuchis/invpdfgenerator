@@ -38,6 +38,9 @@ document
         th.style.border = "1px solid #ccc";
         th.style.padding = "8px";
         th.style.textAlign = "left";
+        th.style.backgroundColor =
+          document.getElementById("headerBgColor").value;
+        th.style.color = document.getElementById("headerTextColor").value;
         headerRow.appendChild(th);
       });
       table.appendChild(headerRow);
