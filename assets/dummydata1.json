@@ -1,0 +1,23 @@
+[
+  {
+    "Item": "Laptop",
+    "Description": "14-inch, 16GB RAM, 512GB SSD",
+    "Quantity": 2,
+    "Unit Price": 1200,
+    "Total": 2400
+  },
+  {
+    "Item": "Monitor",
+    "Description": "24-inch LED",
+    "Quantity": 4,
+    "Unit Price": 200,
+    "Total": 800
+  },
+  {
+    "Item": "Keyboard",
+    "Description": "Mechanical, Backlit",
+    "Quantity": 3,
+    "Unit Price": 80,
+    "Total": 240
+  }
+]
