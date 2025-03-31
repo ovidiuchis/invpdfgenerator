@@ -327,3 +327,11 @@ img[alt="Uploaded Logo"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+#logoPreview {
+  display: block;
+  max-width: 100px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

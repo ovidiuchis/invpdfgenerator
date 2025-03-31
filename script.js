@@ -128,6 +128,9 @@ document
           },
         });
 
+        // Add page numbers after all content is added
+        addPageNumbers(pdf);
+
         // Save the PDF
         pdf.save("document.pdf");
       } catch (err) {
@@ -136,6 +139,24 @@ document
     }
 
     generateTable();
+
+    // Function to add page numbers
+    function addPageNumbers(pdf) {
+      const pageCount = pdf.internal.getNumberOfPages();
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      pdf.setFontSize(10);
+
+      for (let i = 1; i <= pageCount; i++) {
+        pdf.setPage(i); // Go to the page
+        pdf.text(
+          `${i}/${pageCount}`, // Format: x/y
+          pageWidth - 20, // Position near the right edge
+          pageHeight - 10 // Position near the bottom edge
+        );
+      }
+    }
   });
 
 // Function to save form data to localStorage
@@ -168,29 +189,52 @@ function loadFormData() {
     // If a logo is saved, display it in the file input preview
     const savedLogo = localStorage.getItem("logoBase64");
     if (savedLogo) {
-      const logoPreview = document.createElement("img");
-      logoPreview.src = savedLogo;
-      logoPreview.alt = "Uploaded Logo";
-      logoPreview.style.maxWidth = "100px";
-      logoPreview.style.marginTop = "10px";
-      document
-        .getElementById("logo")
-        .insertAdjacentElement("afterend", logoPreview);
+      displayLogoPreview(savedLogo);
     }
   }
 }
 
-// Save the uploaded logo as Base64 in localStorage
+// Save the uploaded logo as Base64 in localStorage and display it
 document.getElementById("logo").addEventListener("change", function (e) {
   const file = e.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = function (event) {
-      localStorage.setItem("logoBase64", event.target.result); // Save Base64 string
+      const logoBase64 = event.target.result;
+
+      // Save the Base64 string to localStorage
+      localStorage.setItem("logoBase64", logoBase64);
+
+      // Display the logo preview
+      displayLogoPreview(logoBase64);
     };
     reader.readAsDataURL(file);
   }
 });
+
+// Function to display the logo preview
+function displayLogoPreview(logoBase64) {
+  // Remove any existing preview
+  const existingPreview = document.querySelector("#logoPreview");
+  if (existingPreview) {
+    existingPreview.remove();
+  }
+
+  // Create a new image element for the preview
+  const logoPreview = document.createElement("img");
+  logoPreview.id = "logoPreview";
+  logoPreview.src = logoBase64;
+  logoPreview.alt = "Uploaded Logo";
+  logoPreview.style.maxWidth = "100px";
+  logoPreview.style.marginTop = "10px";
+  logoPreview.style.border = "1px solid #ccc";
+  logoPreview.style.borderRadius = "4px";
+
+  // Insert the preview below the file input
+  document
+    .getElementById("logo")
+    .insertAdjacentElement("afterend", logoPreview);
+}
 
 // Save form data whenever an input changes
 document.getElementById("pdfForm").addEventListener("input", saveFormData);

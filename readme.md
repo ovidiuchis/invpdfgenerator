@@ -14,6 +14,7 @@ A **simple and clean web application** to generate professional PDF documents (l
   - Manual title entry
   - Add fields like date, customer info, etc.
 - Load table data from a JSON API (via a data URL)
+  - The app will expect a array JSON and consume it (see sample data bellow)
 - One-click PDF generation and download
 - Saves your input automatically in **local storage** so you don’t lose your work
 
@@ -28,6 +29,20 @@ A **simple and clean web application** to generate professional PDF documents (l
 
 ---
 
+### 📄 Sample Data
+
+You can use the following sample data files to test the app:
+
+- 👉 [`dummydata1.json`](https://ovidiuchis.github.io/invpdfgenerator/assets/dummydata1.json) – general product listing (e.g., invoice or offer)
+- 👉 [`dummydata2.json`](https://ovidiuchis.github.io/invpdfgenerator/assets/dummydata2.json) – invoice annex (some project task lines with details)
+- 👉[Random JSON from jsonplaceholder] (https://jsonplaceholder.typicode.com/posts)
+
+**How to use in the live demo:**
+
+1. Copy the URL of one of them
+2. Paste it into the **"Data URL"** field in the [live demo](https://ovidiuchis.github.io/invpdfgenerator/).
+3. Click **"Preview"** and generate your PDF.
+
 ## 🌐 Live Demo
 
 👉 [Click here to try the app live](https://ovidiuchis.github.io/invpdfgenerator/)
@@ -36,9 +51,10 @@ A **simple and clean web application** to generate professional PDF documents (l
 
 ## 📸 Screenshot
 
-![screenshot](ss1.png)
-![screenshot](ss2.png)
-![screenshot](ss3.png)
+![screenshot](assets/ss1.png)
+![screenshot](assets/ss2.png)
+![screenshot](assets/ss3.png)
+![screenshot](assets/ss4.png)
 
 ---
 
