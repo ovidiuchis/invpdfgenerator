@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>PDF Generator</h1>
+
+      <form id="pdfForm">
+        <label for="title">Document Title:</label>
+        <input type="text" id="title" placeholder="Invoice, Quote, etc." />
+
+        <label for="details">Additional Info:</label>
+        <textarea
+          id="details"
+          placeholder="Customer name, date, etc."
+        ></textarea>
+
+        <label for="jsonUrl">Data URL (JSON):</label>
+        <input
+          type="text"
+          id="jsonUrl"
+          placeholder="https://example.com/data.json"
+        />
+
+        <button type="button" id="previewButton">Preview</button>
+        <button type="submit">Generate PDF</button>
+      </form>
+
+      <div id="preview" class="preview">
+        <h2>Preview</h2>
+        <div id="previewContent"></div>
+      </div>
+    </div>
+
+    <footer>
+      built by
+      <a href="http://ovidiuchis.github.io/" target="_blank">@ovidiuchis</a>
+    </footer>
+  </body>
+</html>
