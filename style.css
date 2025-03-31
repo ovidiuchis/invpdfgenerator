@@ -319,3 +319,11 @@ button,
 }
 
 /* Add viewport meta tag to HTML */
+
+img[alt="Uploaded Logo"] {
+  display: block;
+  max-width: 100px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

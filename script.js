@@ -69,9 +69,9 @@ document
     const title = document.getElementById("title").value;
     const details = document.getElementById("details").value;
     const jsonUrl = document.getElementById("jsonUrl").value;
-    const logoInput = document.getElementById("logo");
-    const headerBgColor = document.getElementById("headerBgColor").value; // Get header background color
-    const headerTextColor = document.getElementById("headerTextColor").value; // Get header text color
+    const headerBgColor = document.getElementById("headerBgColor").value;
+    const headerTextColor = document.getElementById("headerTextColor").value;
+    const savedLogo = localStorage.getItem("logoBase64"); // Retrieve saved logo from localStorage
     const pdf = new jsPDF();
 
     // Add Title
@@ -83,17 +83,9 @@ document
     const detailLines = pdf.splitTextToSize(details, 170);
     pdf.text(detailLines, 20, 40);
 
-    // Add Logo (if uploaded)
-    if (logoInput.files && logoInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        const imgData = event.target.result;
-        pdf.addImage(imgData, "PNG", 150, 10, 25, 25); // Position: x=150, y=10, width=40, height=20
-        generateTable();
-      };
-      reader.readAsDataURL(logoInput.files[0]);
-    } else {
-      generateTable();
+    // Add Logo (if available)
+    if (savedLogo) {
+      pdf.addImage(savedLogo, "PNG", 150, 10, 25, 25); // Position: x=150, y=10, width=25, height=25
     }
 
     // Fetch table data and generate the table
@@ -136,9 +128,6 @@ document
           },
         });
 
-        // Add page numbers after all content is added
-        addPageNumbers(pdf);
-
         // Save the PDF
         pdf.save("document.pdf");
       } catch (err) {
@@ -146,23 +135,7 @@ document
       }
     }
 
-    // Function to add page numbers
-    function addPageNumbers(pdf) {
-      const pageCount = pdf.internal.getNumberOfPages();
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-
-      pdf.setFontSize(10);
-
-      for (let i = 1; i <= pageCount; i++) {
-        pdf.setPage(i); // Go to the page
-        pdf.text(
-          `${i}/${pageCount}`, // Format: x/y
-          pageWidth - 20, // Position near the right edge
-          pageHeight - 10 // Position near the bottom edge
-        );
-      }
-    }
+    generateTable();
   });
 
 // Function to save form data to localStorage
@@ -173,6 +146,7 @@ function saveFormData() {
     jsonUrl: document.getElementById("jsonUrl").value,
     headerBgColor: document.getElementById("headerBgColor").value,
     headerTextColor: document.getElementById("headerTextColor").value,
+    logo: localStorage.getItem("logoBase64") || "", // Save logo Base64 if available
   };
 
   localStorage.setItem("pdfFormData", JSON.stringify(formData));
@@ -190,8 +164,33 @@ function loadFormData() {
       formData.headerBgColor || "#2980b9";
     document.getElementById("headerTextColor").value =
       formData.headerTextColor || "#ffffff";
+
+    // If a logo is saved, display it in the file input preview
+    const savedLogo = localStorage.getItem("logoBase64");
+    if (savedLogo) {
+      const logoPreview = document.createElement("img");
+      logoPreview.src = savedLogo;
+      logoPreview.alt = "Uploaded Logo";
+      logoPreview.style.maxWidth = "100px";
+      logoPreview.style.marginTop = "10px";
+      document
+        .getElementById("logo")
+        .insertAdjacentElement("afterend", logoPreview);
+    }
   }
 }
+
+// Save the uploaded logo as Base64 in localStorage
+document.getElementById("logo").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      localStorage.setItem("logoBase64", event.target.result); // Save Base64 string
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
 // Save form data whenever an input changes
 document.getElementById("pdfForm").addEventListener("input", saveFormData);
