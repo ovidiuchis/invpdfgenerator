@@ -2,10 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>PDF Generator</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   </head>
@@ -30,6 +34,15 @@
           placeholder="https://example.com/data.json"
         />
 
+        <label for="logo">Upload Logo:</label>
+        <input type="file" id="logo" accept="image/*" />
+
+        <label for="headerBgColor">Table Header Background Color:</label>
+        <input type="color" id="headerBgColor" value="#2980b9" />
+
+        <label for="headerTextColor">Table Header Text Color:</label>
+        <input type="color" id="headerTextColor" value="#ffffff" />
+
         <button type="button" id="previewButton">Preview</button>
         <button type="submit">Generate PDF</button>
       </form>
@@ -38,11 +51,10 @@
         <h2>Preview</h2>
         <div id="previewContent"></div>
       </div>
+      <footer class="footer">
+        built by
+        <a href="http://ovidiuchis.github.io/" target="_blank">@ovidiuchis</a>
+      </footer>
     </div>
-
-    <footer>
-      built by
-      <a href="http://ovidiuchis.github.io/" target="_blank">@ovidiuchis</a>
-    </footer>
   </body>
 </html>

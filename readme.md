@@ -2,9 +2,11 @@
 
 A simple and clean web application to generate PDF documents (invoices, quotes, or customer offers) with a custom header and a dynamic table loaded from a JSON API.
 
+👉 The initial build was a two hour exercise using [VSCode](https://code.visualstudio.com/) and [Copilot Chat](https://code.visualstudio.com/docs/copilot/getting-started-chat)
+
 ## ✨ Features
 
-- Create professional PDF documents in your browser
+- Create PDF documents in your browser
 - Customizable header with:
   - Logo (via file upload or URL)
   - Title (entered manually)
