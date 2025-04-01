@@ -43,14 +43,15 @@
         <label for="headerTextColor">Table Header Text Color:</label>
         <input type="color" id="headerTextColor" value="#ffffff" />
 
-        <button type="button" id="previewButton">Preview</button>
-        <button type="submit">Generate PDF</button>
+        <button type="button" id="previewButton" class="preview">
+          Preview
+        </button>
       </form>
-
-      <div id="preview" class="preview">
-        <h2 style="color: red">Preview</h2>
+      <button onclick="window.print()">Print PDF</button>
+      <div id="preview" class="preview printable">
         <div id="previewContent"></div>
       </div>
+
       <footer class="footer">
         <a
           href="https://github.com/ovidiuchis/invpdfgenerator"
