@@ -2,7 +2,7 @@
 
 A **simple and clean web application** to generate professional PDF documents (like **invoices**, **quotes**, or **customer offers**) right from your browser.
 
-🛠️ $${\color{orange}Originally\space built\space in\space \color{red}two\space hours\space \color{orange}using}$$
+🛠️ Original build took two hours using:
 - [VSCode](https://code.visualstudio.com/)
 - [GitHub Copilot Chat](https://code.visualstudio.com/docs/copilot/getting-started-chat)
 
