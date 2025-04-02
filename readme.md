@@ -27,7 +27,6 @@ A **simple and clean web application** to generate professional PDF documents (l
 - **HTML**
 - **CSS**
 - **JavaScript**
-- [**jsPDF**](https://github.com/parallax/jsPDF) – for client-side PDF generation
 
 ---
 
