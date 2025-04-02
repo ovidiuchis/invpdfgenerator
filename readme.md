@@ -7,6 +7,11 @@ A **simple and clean web application** to generate professional PDF documents (l
 - [GitHub Copilot Chat](https://code.visualstudio.com/docs/copilot/getting-started-chat)
 
 ---
+## 🌐 Live Demo
+
+👉 [Click here to try the app live](https://ovidiuchis.github.io/invpdfgenerator/)
+
+---
 
 ## ✨ Features
 
@@ -43,10 +48,6 @@ You can use the following sample data files to test the app:
 1. Copy the URL of one of them
 2. Paste it into the **"Data URL"** field in the [live demo](https://ovidiuchis.github.io/invpdfgenerator/).
 3. Click **"Preview"** and generate your PDF.
-
-## 🌐 Live Demo
-
-👉 [Click here to try the app live](https://ovidiuchis.github.io/invpdfgenerator/)
 
 ---
 
