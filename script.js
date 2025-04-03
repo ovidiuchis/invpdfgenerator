@@ -1,4 +1,5 @@
-const { jsPDF } = window.jspdf;
+const headerBgColorPicker = document.getElementById("headerBgColor");
+const headerTextColorPicker = document.getElementById("headerTextColor");
 
 // Reusable function to fetch JSON data
 async function fetchJSONData(url) {
@@ -147,6 +148,26 @@ function displayLogoPreview(logoBase64) {
     .insertAdjacentElement("afterend", logoPreview);
 }
 
+function updateTableHeaderColors(bgColor, textColor) {
+  const tableHeaders = previewContent.querySelectorAll("table th");
+  tableHeaders.forEach((header) => {
+    header.style.backgroundColor = bgColor;
+    header.style.color = textColor;
+  });
+}
+headerBgColorPicker.addEventListener("input", () => {
+  updateTableHeaderColors(
+    headerBgColorPicker.value,
+    headerTextColorPicker.value
+  );
+});
+
+headerTextColorPicker.addEventListener("input", () => {
+  updateTableHeaderColors(
+    headerBgColorPicker.value,
+    headerTextColorPicker.value
+  );
+});
 // Save form data whenever an input changes
 document.getElementById("pdfForm").addEventListener("input", saveFormData);
 
