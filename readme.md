@@ -59,7 +59,12 @@ You can use the following sample data files to test the app:
 ![screenshot](assets/ss4.png)
 
 ---
+## ✅ TODO
 
+- [ ] Add other customization options: text color, detail color
+- [ ] Group the color inputs in a collapsible section
+
+      
 ## 📦 Local Installation (Optional)
 
 If you want to run it locally:
