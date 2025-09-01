@@ -18,35 +18,41 @@
       <h1 id="pageTitle">Generator</h1>
 
       <form id="pdfForm">
-        <label for="title">Document Title:</label>
-        <input type="text" id="title" placeholder="Invoice, Quote, etc." />
+        <div class="form-field">
+          <label for="title">Document Title:</label>
+          <input type="text" id="title" placeholder="Invoice, Quote, etc." />
+        </div>
 
-        <label for="details">Additional Info:</label>
-        <textarea
-          id="details"
-          placeholder="Customer name, date, etc."
-        ></textarea>
+        <div class="form-field">
+          <label for="details">Additional Info:</label>
+          <textarea
+            id="details"
+            placeholder="Customer name, date, etc."
+          ></textarea>
+        </div>
 
-        <label for="jsonUrl">Data URL (JSON):</label>
-        <input
-          type="text"
-          id="jsonUrl"
-          placeholder="https://example.com/data.json"
-        />
+        <div class="form-field">
+          <label for="jsonUrl">Data URL (JSON):</label>
+          <input
+            type="text"
+            id="jsonUrl"
+            placeholder="https://example.com/data.json"
+          />
+        </div>
 
         <details class="aesthetics">
           <summary>Aesthetic Elements</summary>
           <div class="aesthetics-grid">
-            <div class="form-group">
+            <div class="form-field">
               <label for="logo">Upload Logo:</label>
               <input type="file" id="logo" accept="image/*" />
             </div>
             <div class="color-row">
-              <div class="color-item">
+              <div class="form-field color-item">
                 <label for="headerBgColor">Table Header Background:</label>
                 <input type="color" id="headerBgColor" value="#2980b9" />
               </div>
-              <div class="color-item">
+              <div class="form-field color-item">
                 <label for="headerTextColor">Header Text:</label>
                 <input type="color" id="headerTextColor" value="#ffffff" />
               </div>

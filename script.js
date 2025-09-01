@@ -148,20 +148,79 @@ function displayLogoPreview(logoBase64) {
     existingPreview.remove();
   }
 
-  // Create a new image element for the preview
-  const logoPreview = document.createElement("img");
-  logoPreview.id = "logoPreview";
-  logoPreview.src = logoBase64;
-  logoPreview.alt = "Uploaded Logo";
-  logoPreview.style.maxWidth = "100px";
-  logoPreview.style.marginTop = "10px";
-  logoPreview.style.border = "1px solid #ccc";
-  logoPreview.style.borderRadius = "4px";
+  // Create a simple inline preview container
+  const logoContainer = document.createElement("div");
+  logoContainer.id = "logoPreview";
+  logoContainer.style.cssText = `
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+  `;
 
-  // Insert the preview below the file input
-  document
-    .getElementById("logo")
-    .insertAdjacentElement("afterend", logoPreview);
+  // Create small thumbnail
+  const logoThumb = document.createElement("img");
+  logoThumb.src = logoBase64;
+  logoThumb.alt = "Logo";
+  logoThumb.style.cssText = `
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+    background: white;
+    border: 1px solid #ddd;
+  `;
+
+  // Create status text
+  const statusText = document.createElement("span");
+  statusText.textContent = "✓ Logo uploaded";
+  statusText.style.cssText = `
+    color: #667eea;
+    font-weight: 500;
+    flex: 1;
+  `;
+
+  // Create remove link
+  const removeLink = document.createElement("a");
+  removeLink.textContent = "Remove";
+  removeLink.href = "#";
+  removeLink.style.cssText = `
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  `;
+
+  removeLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    localStorage.removeItem("logoBase64");
+    logoContainer.remove();
+    document.getElementById("logo").value = "";
+  });
+
+  removeLink.addEventListener("mouseenter", function() {
+    this.style.background = "rgba(231, 76, 60, 0.1)";
+  });
+
+  removeLink.addEventListener("mouseleave", function() {
+    this.style.background = "transparent";
+  });
+
+  // Assemble and insert
+  logoContainer.appendChild(logoThumb);
+  logoContainer.appendChild(statusText);
+  logoContainer.appendChild(removeLink);
+
+  // Insert before the logo form field
+  const logoFormField = document.getElementById("logo").closest(".form-field");
+  logoFormField.parentNode.insertBefore(logoContainer, logoFormField);
 }
 
 function updateTableHeaderColors(bgColor, textColor) {
