@@ -198,18 +198,18 @@ function displayLogoPreview(logoBase64) {
     transition: background 0.2s ease;
   `;
 
-  removeLink.addEventListener("click", function(e) {
+  removeLink.addEventListener("click", function (e) {
     e.preventDefault();
     localStorage.removeItem("logoBase64");
     logoContainer.remove();
     document.getElementById("logo").value = "";
   });
 
-  removeLink.addEventListener("mouseenter", function() {
+  removeLink.addEventListener("mouseenter", function () {
     this.style.background = "rgba(231, 76, 60, 0.1)";
   });
 
-  removeLink.addEventListener("mouseleave", function() {
+  removeLink.addEventListener("mouseleave", function () {
     this.style.background = "transparent";
   });
 
