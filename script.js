@@ -1,6 +1,15 @@
 const headerBgColorPicker = document.getElementById("headerBgColor");
 const headerTextColorPicker = document.getElementById("headerTextColor");
 
+// Function to update page title dynamically
+function updatePageTitle(title) {
+  const heading = document.getElementById("pageTitle");
+  const displayTitle =
+    title && title.trim() !== "" ? title.trim() : "Generator";
+  heading.textContent = `Generator - ${displayTitle}`;
+  document.title = `Generator - ${displayTitle}`;
+}
+
 // Reusable function to fetch JSON data
 async function fetchJSONData(url) {
   const proxy = "https://api.allorigins.win/raw?url=";
@@ -23,6 +32,13 @@ document
 
     const previewContent = document.getElementById("previewContent");
 
+    // Update page title
+    updatePageTitle(title);
+
+    // Define displayTitle for use in the preview content
+    const displayTitle =
+      title && title.trim() !== "" ? title.trim() : "Generator";
+
     previewContent.innerHTML = `
     <div style="text-align:right; margin-bottom:10px;">
       ${
@@ -30,7 +46,7 @@ document
           ? `<img src="${savedLogo}" alt="Logo" style="max-width:100px; margin-bottom:5px;">`
           : ""
       }
-      <h1>${title}</h1>
+      <h1>${displayTitle}</h1>
       <h3>${details.replace(/\n/g, "<br>")}</h3>
       <p id="loadingText" style="color:gray;">Loading data...</p>
     </div>
@@ -168,6 +184,11 @@ headerTextColorPicker.addEventListener("input", () => {
     headerTextColorPicker.value
   );
 });
+// Update page title in real-time as user types in the title field
+document.getElementById("title").addEventListener("input", function () {
+  updatePageTitle(this.value);
+});
+
 // Save form data whenever an input changes
 document.getElementById("pdfForm").addEventListener("input", saveFormData);
 

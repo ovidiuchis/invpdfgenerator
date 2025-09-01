@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>PDF Generator</h1>
+      <h1 id="pageTitle">Generator</h1>
 
       <form id="pdfForm">
         <label for="title">Document Title:</label>
@@ -34,20 +34,33 @@
           placeholder="https://example.com/data.json"
         />
 
-        <label for="logo">Upload Logo:</label>
-        <input type="file" id="logo" accept="image/*" />
+        <details class="aesthetics">
+          <summary>Aesthetic Elements</summary>
+          <div class="aesthetics-grid">
+            <div class="form-group">
+              <label for="logo">Upload Logo:</label>
+              <input type="file" id="logo" accept="image/*" />
+            </div>
+            <div class="color-row">
+              <div class="color-item">
+                <label for="headerBgColor">Table Header Background:</label>
+                <input type="color" id="headerBgColor" value="#2980b9" />
+              </div>
+              <div class="color-item">
+                <label for="headerTextColor">Header Text:</label>
+                <input type="color" id="headerTextColor" value="#ffffff" />
+              </div>
+            </div>
+          </div>
+        </details>
 
-        <label for="headerBgColor">Table Header Background Color:</label>
-        <input type="color" id="headerBgColor" value="#2980b9" />
-
-        <label for="headerTextColor">Table Header Text Color:</label>
-        <input type="color" id="headerTextColor" value="#ffffff" />
-
-        <button type="button" id="previewButton" class="preview">
-          Preview
-        </button>
+        <div class="button-group">
+          <button type="button" id="previewButton" class="preview">
+            Preview
+          </button>
+          <button onclick="window.print()">Print</button>
+        </div>
       </form>
-      <button onclick="window.print()">Print PDF</button>
       <div id="preview" class="preview printable">
         <div id="previewContent"></div>
       </div>
